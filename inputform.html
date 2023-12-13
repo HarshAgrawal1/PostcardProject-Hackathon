@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Christmas Postcard</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'inputform.css' %}">
+  </head>
+  <body>
+    
+    </div>
+    <div class="user-input" ">
+      <form method="POST" action="{%url 'postcard_view' %}"> {% csrf_token %}
+        <label for="id_paragraph">Paragraph:</label>
+        <textarea id="id_paragraph" name="paragraph" rows="4" required></textarea>
+        
+        <button type="submit">Submit</button>
+      </form>
+    </div>
+    
+  </body>
+</html>

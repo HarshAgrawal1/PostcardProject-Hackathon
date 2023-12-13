@@ -1,0 +1,33 @@
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .samplepostcard {
+    display: flex;
+    max-width: 800px;
+    border: 4px solid #c0392b; /* Red border */
+    background-color: #ffffff; /* White background */
+  }
+  
+  .image {
+    flex: 1;
+  }
+  
+  .image img {
+    width: 100%;
+    height: auto;
+  }
+  
+  .writing {
+    flex: 1;
+    padding: 20px;
+  }
+  body {
+    font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f2f2f2; /* Light gray background */
+  }

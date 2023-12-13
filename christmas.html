@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        {%load static%}
+        <link rel="stylesheet" href="{% static 'christmas.css'%}">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="container">
+            <div class="samplepostcard">
+              <div class="image">
+                <img src="https://www.ribboncandyhooking.com/cdn/shop/products/Vintage_xmas_children_and_snowman_1024x1024.jpg?v=1669409576" alt="Merry Christmas">
+              </div>
+              <div class="writing">
+                <h1 class="sender_name">Dear {{receiver_name}}</h1>
+                <p class="paragraph">{{paragraph}}</p>
+              </div>
+            </div>
+            
+        </div>
+
+        <div class="send-email-section">
+          <h2>Send Christmas Greetings</h2>
+          <form action="{% url 'send_card' %}" method="post">
+              {% csrf_token %}
+              <label for="num_people">Number of People:</label>
+              <input type="number" id="num_people" name="num_people" min="1" required><br><br>
+
+              <!-- Repeat the input fields for each person -->
+              <div class="person-details">
+                  {% for i in range(num_people) %}
+                      <h3>Person {{ forloop.counter }}</h3>
+                      <label for="receiver_name_{{ forloop.counter }}">Receiver's Name:</label>
+                      <input type="text" id="receiver_name_{{ forloop.counter }}" name="receiver_name_{{ forloop.counter }}" required><br>
+                      <label for="email_{{ forloop.counter }}">Email:</label>
+                      <input type="email" id="email_{{ forloop.counter }}" name="email_{{ forloop.counter }}" required><br><br>
+                  {% endfor %}
+              </div>
+
+              <input type="submit" value="Send Greetings">
+          </form>
+        </div>
+        {% comment %} <script src="" async defer></script> {% endcomment %}
+        {% comment %} {% if sender_name and paragraph %}
+      
+            <div class="submitted-data">
+              <h2>Submitted Data:</h2>
+              <p><strong>Sender's Name:</strong> {{ sender_name }}</p>
+              <p><strong>Paragraph:</strong> {{ paragraph }}</p>
+            </div>
+        {% endif %} {% endcomment %}
+    </div>  
+    </body>
+</html>
